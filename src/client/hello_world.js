@@ -45,7 +45,7 @@ const pathToProgram = 'dist/program/helloworld.so';
  * Layout of the greeted account data
  */
 const greetedAccountDataLayout = BufferLayout.struct([
-  BufferLayout.u32('numGreets'),
+  BufferLayout.seq(BufferLayout.u8(), 94, 'fenString'),
 ]);
 
 /**
@@ -184,11 +184,7 @@ export async function reportHellos(): Promise<void> {
   if (accountInfo === null) {
     throw 'Error: cannot find the greeted account';
   }
-  const info = greetedAccountDataLayout.decode(Buffer.from(accountInfo.data));
-  console.log(
-    greetedPubkey.toBase58(),
-    'has been greeted',
-    info.numGreets.toString(),
-    'times',
-  );
+  const {fenString: fenBytes} = greetedAccountDataLayout.decode(Buffer.from(accountInfo.data));
+  const fenString = fenBytes.map(c => String.fromCharCode(c)).join('');
+  console.log('The FEN string is:', fenString);
 }
