@@ -18,7 +18,6 @@ program = ["solana-sdk/program"]
 default = ["solana-sdk/default"]
 
 [dependencies]
-byteorder = "1.3"
 solana-sdk = { version = "=1.3.4", default-features = false, optional = true }
 
 [lib]

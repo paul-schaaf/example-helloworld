@@ -45,7 +45,7 @@ const pathToProgram = 'dist/program/helloworld.so';
  * Layout of the greeted account data
  */
 const greetedAccountDataLayout = BufferLayout.struct([
-  BufferLayout.seq(BufferLayout.u8(), 94, 'fenString'),
+  BufferLayout.seq(BufferLayout.u8(), 92, 'fenString'),
 ]);
 
 /**

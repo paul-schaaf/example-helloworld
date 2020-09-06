@@ -1,6 +1,5 @@
 #![cfg(feature = "program")]
 
-use byteorder::{ByteOrder, LittleEndian};
 use solana_sdk::{
     account_info::{next_account_info, AccountInfo},
     entrypoint,
@@ -34,7 +33,7 @@ fn process_instruction<'a>(
     }
 
     // Increment and store the number of times the account has been greeted
-    let new_fen_bytes = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 0".as_bytes();
+    let new_fen_bytes = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1".as_bytes();
     let mut data = account.try_borrow_mut_data()?;
     for x in data.iter_mut() {
         *x = 0;
